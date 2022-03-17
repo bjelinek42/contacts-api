@@ -6,9 +6,17 @@ GET http://localhost:3000/contacts
 
 ###
 POST http://localhost:3000/contacts
+content-type: application/json
 
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "jdoe@gmail.com",
+  "phone_number": "432-786-9987",
+  "address": "2001 Blake St, Denver, CO 80205"
+}
 ###
-PATCH http://localhost:3000/contacts/1
+PATCH http://localhost:3000/contacts/5
 content-type: application/json
 
 {
@@ -16,4 +24,4 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3000/contacts/4
+DELETE http://localhost:3000/contacts/5
