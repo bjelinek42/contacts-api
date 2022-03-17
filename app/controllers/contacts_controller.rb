@@ -1,21 +1,37 @@
 class ContactsController < ApplicationController
 
-  def give_contact
-    contact = Contact.first
-    render json: {
-      id: contact.id,
-      first_name: contact.first_name,
-      last_name: contact.last_name,
-      email: contact.email,
-      phone_number: contact.phone_number
-
-      # "#{first_name} #{last_name}"
-    }
+  def index
+    contact = Contact.all
+    render json: contact.as_json
   end
 
-  def give_all_contacts
-    contacts = Contact.all
-    render json: contacts
+  def show
+    contact = Contact.find_by(id: params[:id])
+    render json: contact.as_json
   end
 
+  def create
+    contact = Contact.new({
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      phone_number: params[:phone_number]
+    })
+  end
+
+  def update
+    contact = Contact.find_by(id: params[:id])
+    contact.first_name = params[:first_name] 
+    contact.last_name= params[:last_name] 
+    contact.email= params[:email] 
+    contact.phone_number= params[:phone_number] 
+    # contact.latitude = params[:address] 
+    # contact.longitude = params[:address] 
+    contact.save
+  end
+
+  def destroy
+    contact = Contact.find_by(id: params[:id])
+    contact.delete
+  end
 end

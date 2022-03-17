@@ -1,0 +1,19 @@
+###
+GET http://localhost:3000/contacts/1
+
+###
+GET http://localhost:3000/contacts
+
+###
+POST http://localhost:3000/contacts
+
+###
+PATCH http://localhost:3000/contacts/1
+content-type: application/json
+
+{
+  "address": "Denver"
+}
+
+###
+DELETE http://localhost:3000/contacts/4
