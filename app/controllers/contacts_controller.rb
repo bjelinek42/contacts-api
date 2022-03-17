@@ -11,8 +11,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    results = Geocoder.search("Paris")
-    p results.first.coordinates
+    results = Geocoder.search(params[:address])
     contact = Contact.new({
       first_name: params[:first_name],
       last_name: params[:last_name],
